@@ -11,3 +11,4 @@ djangorestframework-simplejwt
 celery
 redis
 python-decouple
+drf-yasg
