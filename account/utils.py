@@ -17,7 +17,7 @@ def send_activation_code(email, code, status):
         send_mail(
             'Активация аккаунта',
             message,
-            'stackoverflow_admin@gmail.com',
+            'spotify@gmail.com',
             [email],
             html_message=msg_html,
             fail_silently=False
@@ -27,7 +27,7 @@ def send_activation_code(email, code, status):
         send_mail(
             'Восстановление пароля',
             f'Код активации: {code}',
-            'stack_overflow@admin.com',
+            'spotify@admin.com',
             [email],
             fail_silently=True
         )

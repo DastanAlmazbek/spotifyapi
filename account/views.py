@@ -26,7 +26,7 @@ class RegistrationView(APIView):
 
 
 class ActivationView(APIView):
-    # permission_classes = [AllowAny]
+    permission_classes = [AllowAny]
 
     def get(self, request, code, email):
         user = User.objects.get(
@@ -58,6 +58,8 @@ class LogoutView(APIView):
 
 
 class ForgotPasswordView(APIView):
+    permission_classes = [AllowAny]
+
     def get(self, request, email):
         user = get_object_or_404(User, email=email)
         user.is_active = False
