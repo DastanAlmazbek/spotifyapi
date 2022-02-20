@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.ListCreateMovieAPIView.as_view()),
-    path('<int:pk>/', views.RetrieveUpdateDestroyMovieAPIView.as_view()),
+    path('', views.ListCreateSongAPIView.as_view()),
+    path('<int:pk>/', views.RetrieveUpdateDestroySongAPIView.as_view()),
 ]

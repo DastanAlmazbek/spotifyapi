@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'spotifyapi.wsgi.application'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 5,
+    'PAGE_SIZE': 2,
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -169,3 +169,17 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = [
+
+    os.path.join(BASE_DIR, 'static'),
+
+]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+
+MEDIA_URL = ''

@@ -6,6 +6,6 @@ class SongSerializer(serializers.ModelSerializer):
 
 
     class Meta:
-        fields = ('id','title', 'genre', 'year', 'author')
+        fields = ('id','title', 'genre', 'year', 'author', 'image')
         model = Song
 
