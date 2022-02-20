@@ -7,7 +7,7 @@ from .serializers import SongSerializer
 from .filters import SongFilter
 from rest_framework.pagination import PageNumberPagination
 
-class ListCreateMovieAPIView(ListCreateAPIView):
+class ListCreateSongAPIView(ListCreateAPIView):
     serializer_class = SongSerializer
     queryset = Song.objects.all()
     permission_classes = [IsAuthenticated]
@@ -19,7 +19,7 @@ class ListCreateMovieAPIView(ListCreateAPIView):
         serializer.save()
 
 
-class RetrieveUpdateDestroyMovieAPIView(RetrieveUpdateDestroyAPIView):
+class RetrieveUpdateDestroySongAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = SongSerializer
     queryset = Song.objects.all()
     permission_classes = [IsAuthenticated]
