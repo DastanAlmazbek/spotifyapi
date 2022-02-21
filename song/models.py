@@ -20,3 +20,15 @@ class SongReview(models.Model):
     rating = models.PositiveSmallIntegerField(default=1, null=True, blank=True)
     is_liked = models.BooleanField(default=False, null=True, blank=True)
     review = models.TextField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['-id']    
+
+
+class SongFavorite(models.Model):
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name="favourites")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="favourites")
+    favorite = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-id']
