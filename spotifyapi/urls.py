@@ -37,5 +37,6 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0)), 
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
-    path('song/', include('song.urls'))
+    path('song/', include('song.urls')),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
