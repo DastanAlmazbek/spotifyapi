@@ -1,4 +1,6 @@
+from pyexpat import model
 from django.db import models
+from account.models import User
 
 
 class Song(models.Model):
@@ -11,3 +13,10 @@ class Song(models.Model):
     class Meta:
         ordering = ['-id']
 
+
+class SongReview(models.Model):
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='reviews')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
+    rating = models.PositiveSmallIntegerField(default=1, null=True, blank=True)
+    is_liked = models.BooleanField(default=False, null=True, blank=True)
+    review = models.TextField(null=True, blank=True)

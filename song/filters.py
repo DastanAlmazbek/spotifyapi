@@ -3,8 +3,8 @@ from .models import Song
 
 
 class SongFilter(filters.FilterSet):
-    title = filters.CharFilter()
-    author = filters.CharFilter()
+    title = filters.CharFilter(lookup_expr='icontains')
+    author = filters.CharFilter(lookup_expr='icontains')
 
     class Meta:
         model = Song
