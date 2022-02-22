@@ -21,7 +21,7 @@ class RegistrationView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(
-                'ok', 201
+                'Поздравляем! Вы зарегистрированы, код активации аккаунта отправлен на вашу почту.', 201
             )
 
 
@@ -52,9 +52,9 @@ class LogoutView(APIView):
             refresh_token = request.data["refresh_token"]
             token = RefreshToken(token=refresh_token)
             token.blacklist()
-            return Response('ok')
+            return Response('Вы обновили токен')
         except Exception as e:
-            return Response('ok')
+            return Response('Вы вышли из аккаунта')
 
 
 class ForgotPasswordView(APIView):
@@ -69,7 +69,7 @@ class ForgotPasswordView(APIView):
             email=user.email, code=user.activation_code, 
             status='forgot_password'
         )
-        return Response('Проверьте почту', status=200)
+        return Response('Проверьте электронную почту', status=200)
 
 
 class CompleteResetPasswordView(APIView):
@@ -79,5 +79,5 @@ class CompleteResetPasswordView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(
-                'Вы успешно поменяли пароль', status=200
+                'Вы успешно сменили пароль', status=200
             )
