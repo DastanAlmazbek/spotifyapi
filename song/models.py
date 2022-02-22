@@ -2,6 +2,11 @@ from pyexpat import model
 from django.db import models
 from account.models import User
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from .tasks import notify_user
+
 
 class Song(models.Model):
     title = models.CharField(max_length=100)
@@ -32,3 +37,9 @@ class SongFavorite(models.Model):
 
     class Meta:
         ordering = ['-id']
+
+
+@receiver(post_save, sender=SongReview)
+def notify_about_creation(sender, instance, created, **kwargs):
+    if created:
+        notify_user.delay(instance.user.email)
